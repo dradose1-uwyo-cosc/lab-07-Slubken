@@ -1,8 +1,8 @@
-# Your Name Here
+# Spencer Lubken
 # UWYO COSC 1010
-# Submission Date
-# Lab XX
-# Lab Section: 
+# Submission Date 10/28/24
+# Lab 07
+# Lab Section: 14
 # Sources, people worked with, help given to: 
 # your
 # comments
@@ -16,8 +16,24 @@
     # To do so you can use the methods `.isdigit()` or `.isnumeric()`
     # If a user did not enter a number output a statement saying so
 # You will continue to prompt the user until a proper integer value is entered
-
 factorial = 1
+while True:
+    upper_bound = input("Type 'exit' to end. Upper Bound:")
+    if upper_bound .isdigit():
+        if int(upper_bound) < 0:
+            print("You must input a positive integer!")
+        elif int(upper_bound) > 0:
+            for i in range(1, int(upper_bound)+1):
+                factorial = factorial * i
+                print(factorial)
+        break
+    else:
+            print("Please enter a positive integer.")
+factorial = 1
+number = upper_bound
+factorial *= number
+
+
 
 print(f"The result of the factorial based on the given bound is {factorial}")
 
@@ -36,7 +52,17 @@ print("*"*75)
     # I recommend checking out: https://www.w3schools.com/python/ref_string_replace.asp to figure out how one may remove a character from a string
 # All this together means you will have an intensive while loop that includes multiple if statements, likely with some nesting 
 # The sum should start at 0 
-
+total_sum = factorial
+while True:
+    user_input = input("Enter an integer (or type 'exit' to end): ")
+    if user_input.lower() == 'exit':
+        break
+    if user_input[0] == '-' and user_input[1:].isdigit() or user_input.isdigit():
+        number = int(user_input)
+        total_sum = number
+    else:
+        print("Invalid input. Please enter a valid integer or 'exit'.")
+print("The sum of all inputs is:", total_sum)
 num_sum = 0 
 
 print(f"Your final sum is {num_sum}")
@@ -58,5 +84,48 @@ print("*"*75)
     # So, it should function the same for `5 + 6` as `5+6`
 # Print the result of the equation
 # Again, loop through prompting the user for input until `exit` in any casing is input 
-
+while True:
+    user_input = input("Enter a calculation ('5 + 6') or type 'exit' to quit: ").replace(" ", "")
+    if user_input.lower() == 'exit':
+        break
+    if '+' in user_input:
+        operands = user_input.split('+')
+        operator = '+'
+    elif '-' in user_input:
+        operands = user_input.split('-')
+        operator = '-'
+    elif '*' in user_input:
+        operands = user_input.split('*')
+        operator = '*'
+    elif '/' in user_input:
+        operands = user_input.split('/')
+        operator = '/'
+    elif '%' in user_input:
+        operands = user_input.split('%')
+        operator = '%'
+    else:
+        print("Invalid operation. Please use one of +, -, *, /, %.")
+        continue
+    if operands[0].isdigit() and operands[1].isdigit():
+        operand1 = int(operands[0])
+        operand2 = int(operands[1])
+        if operator == '+':
+            result = operand1 + operand2
+        elif operator == '-':
+            result = operand1 - operand2
+        elif operator == '*':
+            result = operand1 * operand2
+        elif operator == '/':
+            if operand2 == 0:
+                print("Error: Division by zero.")
+                continue
+            result = operand1 / operand2
+        elif operator == '%':
+            if operand2 == 0:
+                print("Error: Modulo by zero.")
+                continue
+            result = operand1 % operand2
+        print(f"The result of {operand1} {operator} {operand2} is: {result}")
+    else:
+        print("Invalid input. Please enter positive integers.")
         
